@@ -5,6 +5,22 @@
   <% end %>
 </div>
 
+<div class="mt-4 mx-4 flex gap-4">
+  <div class="text-sm flex justify-around gap-4 px-4 min-w-full">
+    <div class="text-7xl text-[#434b54]">
+      <%= content_tag(:i, nil, :class => "fa-solic fa-#{@category.icon}") %>
+    </div>
+    <div class="py-4">
+      <p class="text-[#434b54] font-bold">Total Spend<p>
+      <p class="text-[#434b54] font-bold">$<%= @category.total_value %></p>
+    </div>
+    <div class="py-4">
+      <p class="text-[#434b54] font-bold">Last 30 Days<p>
+      <p class="text-[#434b54] font-bold">$<%= @category.last_month_value %></p>
+    </div>
+  </div>
+</div>
+
 <ul class="m-4 flex flex-col gap-4">
   <% @transactions.each do |transaction| %>
     <li>
