@@ -5,22 +5,27 @@
 <ul class="m-4 flex flex-col gap-4">
   <% @categories.each do |category| %>
     <li>
-      <%= link_to category_path(category.id) do %>
-        <div class="flex gap-4 px-4 bg-white shadow-md">
-          <div class="text-8xl text-[#434b54]">
-            <%= content_tag(:i, nil, :class => "fa-solic fa-#{category.icon}") %>
-          </div>
-          <div class="py-4 flex flex-col justify-between">
-            <p class="text-[#989da3]"><%= category.name %></p>
-            <p class="text-[#989da3] text-sm">
-              <%= category.last_modification&.strftime('%-d %b %Y') || "No transactions" %>
-            </p>
-          </div>
-          <div class="py-4 ml-auto">
-            <p class="font-medium text-right">$<%= category.total_value %></p>
-          </div>
+      <div class="flex gap-4 px-4 bg-white shadow-md">
+        <div class="text-8xl text-[#434b54]">
+          <%= content_tag(:i, nil, :class => "fa-solic fa-#{category.icon}") %>
         </div>
-      <% end %>
+        <div class="py-4 flex flex-col justify-between">
+          <%= link_to category_path(category.id) do %>
+            <p class="text-[#434b54] font-bold"><%= category.name %></p>
+          <% end %>
+          <p class="text-[#989da3] text-sm">
+            <%= category.last_modification&.strftime('%-d %b %Y') || "No transactions" %>
+          </p>
+        </div>
+        <div class="py-4 ml-auto flex flex-col justify-between items-end">
+          <p class="text-[#434b54] font-bold text-right">$<%= category.total_value %></p>
+          <%= button_to "Delete",
+            category_path(category.id),
+            method: :delete,
+            class: "bg-red-500 text-[#f5f6f8] font-medium -mx-2 px-2 rounded-md text-sm"
+          %>
+        </div>
+      </div>
     </li>
   <% end %>
 </ul>

@@ -20,7 +20,10 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @category.destroy
+    redirect_to categories_path, notice: 'Category deleted'
+  end
 
   protected
 
