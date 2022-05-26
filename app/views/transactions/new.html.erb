@@ -1,4 +1,24 @@
-<div>
-  <h1 class="font-bold text-4xl">Transactions#new</h1>
-  <p>Find me in app/views/transactions/new.html.erb</p>
+<div class="flex justify-center py-3 text-white bg-[#3778c2] relative">
+  <h1>NEW TRANSACTION</h1>
+  <%= link_to category_path(@category.id), class: "absolute left-3" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
 </div>
+
+<%= form_with model: @transaction, url: category_transactions_path(@category.id) do |f| %>
+  <div class="my-4 border-y border-[#c4c5c7] divide-y divide-[#c4c5c7]">
+    <div class="field">
+      <%= f.label :name, class: "sr-only" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "min-w-full border-none" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :amount, class: "sr-only" %>
+      <%= f.number_field :amount, placeholder: "Amount", class: "min-w-full border-none", min: 0, step: ".01" %>
+    </div>
+  </div>
+
+  <div class="actions mb-4 flex justify-center">
+    <%= f.submit "ADD", class: "text-white bg-[#3778c2] p-3 w-3/5 rounded mx-auto" %>
+  </div>
+<% end %>
