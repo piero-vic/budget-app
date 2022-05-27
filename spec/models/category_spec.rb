@@ -46,6 +46,18 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe '#last_month_value' do
+    before do
+      Expense.create(name: 'Eggs', amount: 9.99, user: subject.user, category: subject)
+      Expense.create(name: 'Rice', amount: 19.99, user: subject.user, category: subject, created_at: Date.today - 90)
+      Expense.create(name: 'Veggies', amount: 5.99, user: subject.user, category: subject)
+    end
+
+    it 'should return the total value of the las 30 days' do
+      expect(subject.last_month_value).to eql(15.98)
+    end
+  end
+
   describe '#last_modification' do
     context 'when there are no expenses' do
       it 'should return nil' do

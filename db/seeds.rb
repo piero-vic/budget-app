@@ -1,6 +1,6 @@
 john = User.create(name: 'John Doe', email: 'john.doe@example.com', password: 'password123')
 
-john_groceries = Category.create(name: 'Groceries', icon: 'shopping-cart', user: john)
+john_groceries = Category.create(name: 'Groceries', icon: 'basket-shopping', user: john)
 john_entertainment = Category.create(name: 'Entertainment', icon: 'gamepad', user: john)
 john_health = Category.create(name: 'Health', icon: 'hospital', user: john)
 
