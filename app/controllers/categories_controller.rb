@@ -8,8 +8,8 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @icons = %w[basket-shopping shirt credit-card bus car bicycle gamepad dumbbell paw graduation-cap hospital
-                kit-medical]
+    @icons = %w[basket-shopping laptop credit-card bus car bicycle gamepad futbol paw graduation-cap hospital
+                heart-pulse]
   end
 
   def create
