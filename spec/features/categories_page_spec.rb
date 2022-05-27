@@ -1,7 +1,17 @@
 require 'rails_helper'
+require 'database_cleaner/active_record'
+
+DatabaseCleaner.strategy = :truncation
 
 RSpec.feature 'Categories page', type: :feature do
   before :each do
+    DatabaseCleaner.clean
+
+    john = User.create(name: 'John Doe', email: 'john.doe@example.com', password: 'password123')
+    Category.create(name: 'Groceries', icon: 'basket-shopping', user: john)
+    Category.create(name: 'Entertainment', icon: 'gamepad', user: john)
+    Category.create(name: 'Health', icon: 'hospital', user: john)
+
     log_in_with 'john.doe@example.com', 'password123'
     visit categories_path
   end

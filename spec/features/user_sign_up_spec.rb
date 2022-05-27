@@ -1,6 +1,13 @@
 require 'rails_helper'
+require 'database_cleaner/active_record'
+
+DatabaseCleaner.strategy = :truncation
 
 RSpec.feature 'User sign up', type: :feature do
+  before :each do
+    DatabaseCleaner.clean
+  end
+
   scenario 'with valid name, email and password' do
     sign_up_with 'Mike Myers', 'mike.myers@example.com', 'password123'
 

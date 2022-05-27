@@ -1,6 +1,14 @@
 require 'rails_helper'
+require 'database_cleaner/active_record'
+
+DatabaseCleaner.strategy = :truncation
 
 RSpec.feature 'User log in', type: :feature do
+  before :each do
+    DatabaseCleaner.clean
+    User.create(name: 'John Doe', email: 'john.doe@example.com', password: 'password123')
+  end
+
   scenario 'with valid email and password' do
     log_in_with 'john.doe@example.com', 'password123'
 
