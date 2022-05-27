@@ -8,6 +8,7 @@
 
 - Ruby on Rails
 - TailwindCSS
+- Alpine.js
 
 ## Getting Started
 
@@ -20,7 +21,7 @@ You need to have `ruby` installed on your local machine.
 ### Setup
 
 ```
-git clone https://github.com/piero-vic/budget.git
+git clone https://github.com/piero-vic/budget-app.git
 ```
 
 ### Install
@@ -34,8 +35,10 @@ rails db:seed
 
 ### Usage
 
+This project uses TailwindCSS, so we need to run it with `./bin/dev` to compile the CSS code.
+
 ```
-rails ./bin/dev
+./bin/dev
 ```
 
 ## Author
