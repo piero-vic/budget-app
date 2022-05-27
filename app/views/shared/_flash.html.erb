@@ -1,0 +1,11 @@
+<% flash.each do |type, msg| %>
+  <%= content_tag :div, class: "px-3 #{type == "alert" ? "bg-red-500" : "bg-[#5fb523]"}" do%>
+    <% if msg.instance_of? Array %>
+      <% msg.each do |message| %>
+        <p class="text-white max-w-screen-lg mx-auto"><%= message %></p>
+      <% end %>
+    <% else %>
+      <p class="text-white max-w-screen-lg mx-auto"><%= msg %></p>
+    <% end %>
+  <% end %>
+<% end %>
