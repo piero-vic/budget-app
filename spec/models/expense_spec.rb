@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
   before do
-    User.create(id: 1, name: 'John Doe', email: 'johndoe@example.com', password: 'password123')
-    Category.create(id: 1, name: 'Groceries', icon: 'shopping-cart', user_id: 1)
+    @user = User.create(name: 'John Doe', email: 'johndoe@example.com', password: 'password123')
+    @category = Category.create(name: 'Groceries', icon: 'shopping-cart', user_id: @user.id)
   end
 
   subject do
-    Expense.new(name: 'Eggs', amount: 9.99, user_id: 1, category_id: 1)
+    Expense.new(name: 'Eggs', amount: 9.99, user_id: @user.id, category_id: @category.id)
   end
 
   before { subject.save }
@@ -23,12 +23,12 @@ RSpec.describe Expense, type: :model do
   end
 
   it 'should have the corresponding user' do
-    expect(subject.user.id).to eql(1)
+    expect(subject.user.id).to eql(@user.id)
     expect(subject.user.name).to eql('John Doe')
   end
 
   it 'should have the corresponding category_id' do
-    expect(subject.category.id).to eql(1)
+    expect(subject.category.id).to eql(@category.id)
     expect(subject.category.name).to eql('Groceries')
   end
 end

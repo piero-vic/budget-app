@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   before do
-    User.create(id: 1, name: 'John Doe', email: 'johndoe@example.com', password: 'password123')
+    @user = User.create(name: 'John Doe', email: 'johndoe@example.com', password: 'password123')
   end
 
   subject do
-    Category.new(name: 'Groceries', icon: 'shopping-cart', user_id: 1)
+    Category.create(name: 'Groceries', icon: 'shopping-cart', user_id: @user.id)
   end
 
   before { subject.save }
@@ -22,7 +22,7 @@ RSpec.describe Category, type: :model do
   end
 
   it 'should have the corresponding user' do
-    expect(subject.user.id).to eql(1)
+    expect(subject.user.id).to eql(@user.id)
     expect(subject.user.name).to eql('John Doe')
   end
 
