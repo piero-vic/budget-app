@@ -5,6 +5,8 @@
   <% end %>
 </div>
 
+<%= render partial: "shared/flash" %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { "data-turbo": "false" }) do |f| %>
   <div class="my-4 border-y border-[#c4c5c7] divide-y divide-[#c4c5c7]">
     <div class="field">
