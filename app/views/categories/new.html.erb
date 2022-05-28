@@ -1,7 +1,7 @@
 <div class="flex justify-center py-3 text-white bg-[#3778c2] relative">
   <h1>NEW CATEGORY</h1>
   <%= link_to categories_path, class: "absolute left-3" do %>
-    <i class="fa-solid fa-arrow-left"></i>
+    <i class="bi bi-arrow-left"></i>
   <% end %>
 </div>
 
@@ -12,7 +12,7 @@
       <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "min-w-full border-none" %>
     </div>
 
-    <div class="mt-4 field" x-data="{ selected: 'basket-shopping' }">
+    <div class="mt-4 field" x-data="{ selected: 'basket' }">
       <%= f.label :icon, class:"block py-2 px-3 text-gray-600" %>
       <%= f.select :icon, options_for_select(@icons), {}, { class: "sr-only", "x-bind:value": "selected" }%>
 
@@ -23,7 +23,7 @@
             x-on:click="selected = <%= "'#{icon}'" %>"
             x-bind:class="selected == <%= "'#{icon}'" %> ? 'text-[#3778c2]' : 'text-[#434b54]'"
           >
-            <i class="fa-solid <%= "fa-#{icon}" %>" ></i>
+            <i class="bi <%= "bi-#{icon}" %>" ></i>
           </div>
         <% end %>
       </div>
