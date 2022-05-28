@@ -1,11 +1,11 @@
 <div class="flex justify-center py-3 text-white bg-[#3778c2] relative" x-data="{ navbar: false }">
   <h1>CATEGORIES</h1>
   <button class="absolute left-3" @click="navbar = true">
-    <i class="fa-solid fa-bars"></i>
+    <i class="bi bi-list"></i>
   </button>
   <div class="absolute bg-[#3778c2] shadow-2xl min-h-screen w-3/4 p-3 left-0 top-0" x-show="navbar" @click.outside="navbar = false">
     <button class="absolute left-3" @click="navbar = false">
-      <i class="fa-solid fa-xmark"></i>
+      <i class="bi bi-x-lg"></i>
     </button>
     <p class="font-bold max-w-fit mx-auto mb-3">BUDGET</p>
     <hr class="mb-3">
@@ -23,8 +23,8 @@
   <% @categories.each do |category| %>
     <li>
       <div class="flex gap-4 px-4 bg-white shadow-md">
-        <div class="text-8xl text-[#434b54]">
-          <%= content_tag(:i, nil, :class => "fa-solic fa-#{category.icon}") %>
+        <div class="text-5xl text-[#434b54] flex items-center">
+          <%= content_tag(:i, nil, :class => "bi bi-#{category.icon}") %>
         </div>
         <div class="py-4 flex flex-col justify-between">
           <%= link_to category_path(category.id) do %>

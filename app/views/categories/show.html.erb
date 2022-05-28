@@ -1,14 +1,14 @@
 <div class="flex justify-center py-3 text-white bg-[#3778c2] relative">
   <h1><%= @category.name.upcase %></h1>
   <%= link_to categories_path, class: "absolute left-3" do %>
-    <i class="fa-solid fa-arrow-left"></i>
+    <i class="bi bi-arrow-left"></i>
   <% end %>
 </div>
 
 <div class="mt-4 mx-4 flex gap-4">
   <div class="text-sm flex justify-around gap-4 px-4 min-w-full">
     <div class="text-7xl text-[#434b54]">
-      <%= content_tag(:i, nil, :class => "fa-solic fa-#{@category.icon}") %>
+      <%= content_tag(:i, nil, :class => "bi bi-#{@category.icon}") %>
     </div>
     <div class="py-4">
       <p class="text-[#434b54] font-bold">Total Spend<p>
