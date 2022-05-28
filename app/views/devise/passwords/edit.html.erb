@@ -1,0 +1,26 @@
+<div class="flex justify-center py-3 text-white bg-[#3778c2]">
+  <h1>CHANGE PASSWORD</h1>
+</div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="my-4 border-y border-[#c4c5c7] divide-y divide-[#c4c5c7]">
+    <div class="field">
+      <%= f.label :password, "New password", class: "sr-only" %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "New password", class: "min-w-full border-none" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirm new password", class: "sr-only" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password", class: "min-w-full border-none" %>
+    </div>
+  </div>
+
+  <div class="actions mb-4 flex justify-center">
+    <%= f.submit "Change password", class: "text-white bg-[#3778c2] p-3 w-3/5 rounded mx-auto" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

@@ -1,0 +1,56 @@
+<div class="flex justify-center py-3 text-white bg-[#3778c2] relative" x-data="{ navbar: false }">
+  <h1>CATEGORIES</h1>
+  <button class="absolute left-3" @click="navbar = true">
+    <i class="bi bi-list"></i>
+  </button>
+  <div class="absolute bg-[#3778c2] shadow-2xl min-h-screen w-3/4 p-3 left-0 top-0" x-show="navbar" @click.outside="navbar = false">
+    <button class="absolute left-3" @click="navbar = false">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <p class="font-bold max-w-fit mx-auto mb-3">BUDGET</p>
+    <hr class="mb-3">
+    <nav class="flex flex-col gap-2">
+      <%= link_to "Home / Categories", authenticated_root_path, class: ""  %>
+      <%= link_to "User Settings", edit_user_registration_path, class: ""  %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+    </nav>
+  </div>
+</div>
+
+<%= render partial: "shared/flash" %>
+
+<ul class="m-4 flex flex-col gap-4">
+  <% @categories.each do |category| %>
+    <li>
+      <div class="flex gap-4 px-4 bg-white shadow-md">
+        <div class="text-5xl text-[#434b54] flex items-center">
+          <%= content_tag(:i, nil, :class => "bi bi-#{category.icon}") %>
+        </div>
+        <div class="py-4 flex flex-col justify-between">
+          <%= link_to category_path(category.id) do %>
+            <p class="text-[#434b54] font-bold"><%= category.name %></p>
+          <% end %>
+          <p class="text-[#989da3] text-sm">
+            <%= category.last_modification&.strftime('%-d %b %Y') || "No transactions" %>
+          </p>
+        </div>
+        <div class="py-4 ml-auto flex flex-col justify-between items-end">
+          <p class="text-[#434b54] font-bold text-right">$<%= category.total_value %></p>
+          <%= button_to "Delete",
+            category_path(category.id),
+            method: :delete,
+            class: "bg-red-500 text-[#f5f6f8] font-medium -mx-2 px-2 rounded-md text-sm"
+          %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<div class="mt-auto">
+  <%= link_to new_category_path do %>
+    <div class="flex justify-center text-white bg-[#5fb523]">
+      <p class="border rounded-sm w-full m-3 py-3 text-center">ADD CATEGORY</p>
+    </div>
+  <% end %>
+</div>
